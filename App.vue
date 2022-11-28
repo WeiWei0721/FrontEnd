@@ -1,14 +1,15 @@
 <template>
-  <HomeForever msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <Home/>
+  </div>
 </template>
 
 <script>
-import HomeForever from './components/HomeForever.vue'
-
+import Home from './Home.vue'
 export default {
   name: 'App',
   components: {
-    HomeForever
+    Home
   }
 }
 </script>
@@ -18,13 +19,15 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 0px;
+  /* text-align: center; */
+  color: white;
+  /* margin-top: 60px; */
+  padding: 0;
+  margin: 0;
 }
-
-body{
-padding:0;
-margin:0;
+body {
+  background: #080808;
+  padding: 0;
+  margin: 0;
 }
 </style>
