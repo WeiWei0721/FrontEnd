@@ -1,7 +1,10 @@
 <?php
+//Turns off Warning Notices for php file
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 $servername = "localhost";
 $username = "root";
-$password = "TIC2601";
+$password = "mysql";
 $database = "property";
 
 // Create connection

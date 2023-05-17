@@ -1,0 +1,55 @@
+<html>
+
+
+<head>
+    <title>Log In</title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> 
+        
+    <style type="text/css">
+        .brand{
+            background: #F08080 !important;
+        }
+        .brand-text{
+            color: #F08080 !important;
+        }
+        form {
+            max-width: 460px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<h4 class="center">SIGN IN</h4>
+    <section class="container">
+        <form class="white" action="sign_in.php"" method="POST">
+            <label><strong>    Registration No       </strong>
+            <input type="text" name="regno" id = "reg_no" placeholder="Enter Registration No" required>
+            <div class="red-text"></div> <br>
+
+            <label><strong>    Password           </strong>
+            <input type="password" name="user_pw" placeholder="Enter Password" required>
+            <div class="red-text"></div> <br>
+
+  		  <div>
+           <span class="psw">Forgot <a href="#">password?</a>                 </span>
+ 		  </div>
+
+            <div class="center">
+             <br>
+                <button type="login">Login</button>
+            </div>
+
+                    
+        </form>
+    </section>
+<br>
+
+</body>
+</html>

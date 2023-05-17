@@ -1,34 +1,35 @@
 <?php
    include("config.php"); 
    session_start();
+   
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       $projectID = mysqli_real_escape_string($link, $_REQUEST['ProjectID']);
       $projectName = mysqli_real_escape_string($link, $_REQUEST['ProjectName']);
       $registrationNo = mysqli_real_escape_string($link, $_REQUEST['RegistrationNo']);
-	$block = mysqli_real_escape_string($link,  $_REQUEST['Block']);	
-	$streetname = mysqli_real_escape_string($link,  $_REQUEST['StreetName']);
-	$flattype = mysqli_real_escape_string($link,  $_REQUEST['FlatType']);	
-	$postaldistrict = mysqli_real_escape_string($link,  $_REQUEST['Postal']);
-	$marketsegment = mysqli_real_escape_string($link,  $_REQUEST['MarketSegment']);
-	$tenure = mysqli_real_escape_string($link, $_REQUEST['Tenure']);
-	$typedsale = mysqli_real_escape_string($link,  $_REQUEST['TypedSale']);
-	$leasecommencedate = mysqli_real_escape_string($link,  $_REQUEST['LeaseCommenceDate']);	
-	$remaininglease = mysqli_real_escape_string($link,  $_REQUEST['RemainingLease']);
-	$units = mysqli_real_escape_string($link,  $_REQUEST['NoOfUnits']);
-	$price = mysqli_real_escape_string($link, $_REQUEST['Price']);
-	$floorarea = mysqli_real_escape_string($link,  $_REQUEST['FloorArea']);
-	$typedarea = mysqli_real_escape_string($link,  $_REQUEST['TypedArea']);
-	$floorlevel = mysqli_real_escape_string($link,  $_REQUEST['FloorLevel']);
-	$unitprice = mysqli_real_escape_string($link,  $_REQUEST['UnitPrice']);
-	$dateofsale = mysqli_real_escape_string($link,  $_REQUEST['DateOfSale']);
+      $block = mysqli_real_escape_string($link,  $_REQUEST['Block']);	
+      $streetname = mysqli_real_escape_string($link,  $_REQUEST['StreetName']);
+      $flattype = mysqli_real_escape_string($link,  $_REQUEST['FlatType']);	
+      $postaldistrict = mysqli_real_escape_string($link,  $_REQUEST['Postal']);
+      $marketsegment = mysqli_real_escape_string($link,  $_REQUEST['MarketSegment']);
+      $tenure = mysqli_real_escape_string($link, $_REQUEST['Tenure']);
+      $typeofsale = mysqli_real_escape_string($link,  $_REQUEST['TypedSale']);
+      $leasecommencedate = mysqli_real_escape_string($link,  $_REQUEST['LeaseCommenceDate']);	
+      $remaininglease = mysqli_real_escape_string($link,  $_REQUEST['RemainingLease']);
+      $units = mysqli_real_escape_string($link,  $_REQUEST['NoOfUnits']);
+      $price = mysqli_real_escape_string($link, $_REQUEST['Price']);
+      $floorarea = mysqli_real_escape_string($link,  $_REQUEST['FloorArea']);
+      $typeofarea = mysqli_real_escape_string($link,  $_REQUEST['TypedArea']);
+      $floorlevel = mysqli_real_escape_string($link,  $_REQUEST['FloorLevel']);
+      $unitprice = mysqli_real_escape_string($link,  $_REQUEST['UnitPrice']);
+      $dateofsale = mysqli_real_escape_string($link,  $_REQUEST['DateOfSale']);
 
-      $sql = "INSERT INTO properties (AgentRegistrationNo, PropertyID, ProjectName, Block, StreetName, FlatType, PostalDistrict, MarketSegment, Tenure, TypedSale, LeaseCommenceDate, RemainingLease, NoofUnits, Price, FloorArea, TypedArea, FloorLevel, UnitPrice, DateofSale) VALUES ( '$registrationNo', '$projectID', '$projectName', '$block', '$streetname', '$flattype', '$postaldistrict', '$marketsegment', '$tenure', '$typedsale' , '$leasecommencedate',  '$remaininglease',  '$units',  '$price', '$floorarea',  '$typedarea', '$floorlevel', '$unitprice', '$dateofsale')";
+      $sql = "INSERT INTO properties (AgentRegistrationNo, PropertyID, ProjectName, Block, StreetName, FlatType, PostalDistrict, MarketSegment, Tenure, TypeofSale, LeaseCommenceDate, RemainingLease, NoofUnits, Price, FloorArea, TypeofArea, FloorLevel, UnitPrice, DateofSale) VALUES ( '$registrationNo', '$projectID', '$projectName', '$block', '$streetname', '$flattype', '$postaldistrict', '$marketsegment', '$tenure', '$typeofsale' , '$leasecommencedate',  '$remaininglease',  '$units',  '$price', '$floorarea',  '$typeofarea', '$floorlevel', '$unitprice', '$dateofsale')";
 
-if(mysqli_query($link, $sql)){
-    echo "Records added successfully.";
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
+      if(mysqli_query($link, $sql)){
+         echo "Records added successfully.";
+      } else{
+         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+      }
 
     $registrationNo = mysqli_real_escape_string($link, $_POST['RegistrationNo']);
     $propertyID = mysqli_real_escape_string($link, $_POST['ProjectID']);
@@ -40,29 +41,30 @@ if(mysqli_query($link, $sql)){
     $count = mysqli_num_rows($result);
 		
     if($count == 1) {
-    $_SESSION['registration_no'] = $row['AgentRegistrationNo'];
-    $_SESSION['property_id'] = $row['PropertyID'];
-    $_SESSION['project_name'] = $row['ProjectName'];
-    $_SESSION['block'] = $row['Block'];
-    $_SESSION['street_name'] = $row['StreetName'];
-    $_SESSION['flat_type'] = $row['FlatType'];
-    $_SESSION['postal_district'] = $row['PostalDistrict'];
-    $_SESSION['market_segment'] = $row['MarketSegment'];
-    $_SESSION['tenure'] = $row['Tenure'];
-    $_SESSION['typed_sale'] = $row['TypedSale'];
-    $_SESSION['lease_commence_year'] = $row['LeaseCommenceDate'];
-    $_SESSION['remaining_lease'] = $row['RemainingLease'];
-    $_SESSION['no_of_unit'] = $row['NoofUnits'];
-    $_SESSION['price'] = $row['Price'];
-    $_SESSION['floor_area'] = $row['FloorArea'];
-    $_SESSION['typed_area'] = $row['TypedArea'];
-    $_SESSION['floor_level'] = $row['FloorLevel'];
-    $_SESSION['unit_price'] = $row['UnitPrice'];
-    $_SESSION['date_of_sale'] = $row['DateOfSale'];
-    header("location: display_property_form.php");
+   //  $_SESSION['registration_no'] = $row['AgentRegistrationNo'];
+   //  $_SESSION['property_id'] = $row['PropertyID'];
+   //  $_SESSION['project_name'] = $row['ProjectName'];
+   //  $_SESSION['block'] = $row['Block'];
+   //  $_SESSION['street_name'] = $row['StreetName'];
+   //  $_SESSION['flat_type'] = $row['FlatType'];
+   //  $_SESSION['postal_district'] = $row['PostalDistrict'];
+   //  $_SESSION['market_segment'] = $row['MarketSegment'];
+   //  $_SESSION['tenure'] = $row['Tenure'];
+   //  $_SESSION['typed_sale'] = $row['TypedSale'];
+   //  $_SESSION['lease_commence_year'] = $row['LeaseCommenceDate'];
+   //  $_SESSION['remaining_lease'] = $row['RemainingLease'];
+   //  $_SESSION['no_of_unit'] = $row['NoofUnits'];
+   //  $_SESSION['price'] = $row['Price'];
+   //  $_SESSION['floor_area'] = $row['FloorArea'];
+   //  $_SESSION['typed_area'] = $row['TypedArea'];
+   //  $_SESSION['floor_level'] = $row['FloorLevel'];
+   //  $_SESSION['unit_price'] = $row['UnitPrice'];
+   //  $_SESSION['date_of_sale'] = $row['DateOfSale'];
+   //  header("location: display_property_form.php");
+   header("location: welcome_profile_agent.php");
 }else {
          $error = "Database error";
-         echo "<script type='text/javascript'>alert('$error');</script>";
+         // echo "<script type='text/javascript'>alert('$error');</script>";
       }
 }
 
