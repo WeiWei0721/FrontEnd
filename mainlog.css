@@ -132,6 +132,53 @@ footer {
     bottom: 0;
 }
 
+/*search button */
+.search-container{
+    width:100%;
+    /* min-height: 10vh; */
+    padding: 5%;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar{
+    display: flex;
+    width: 100%;
+    /* max-width: 700px; */
+    background: #1e293b;
+    align-items: center;
+    border-radius: 60px;
+    padding: 10px 20px;
+}
+
+.search-bar input{
+    background: transparent;
+    flex:1;
+    border: 0;
+    outline:none;
+    padding: 24px 20px;
+    font-size: 20px;
+    color: white;
+}
+
+.search-drop {
+    display: none;
+    max-width: fit-content;
+    width: inherit;
+    background: #1e293b;
+    align-items: right;
+    border-radius: 60px;
+    padding: 10px 20px;
+}
+
+.search-container img{
+    height: 5vh;
+}
+
+
 /* edit button */
     .editlist {
         /* float: right; */
@@ -246,10 +293,6 @@ footer {
             align-content: center;  
         }
 
-        /* iframe{
-            width:"100%";
-            height:"700px";
-        } */
 
         #popup {
             position: absolute;
@@ -257,18 +300,26 @@ footer {
             background-color: white;
             border: 1px solid black;
             padding: 10px;
-            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
         }
 
-        .mapogsg img{
-            height: 0.5vh;
-            width: 100%;
-            background-color: antiquewhite;
+        #popup.show {
+            opacity: 1;
+            pointer-events: auto;
         }
 
-        map {
+        .mapstlye img{
+            display: block;
+            margin: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* map {
         display: flex;
-        }
+        } */
 
         /* Agent Details Style */
         .listinginfo{
@@ -421,3 +472,5 @@ footer {
             text-align: center;
             margin: 0px 1px 0px 1px;
         }
+
+        

@@ -10,6 +10,7 @@
       $streetname = mysqli_real_escape_string($link,  $_REQUEST['StreetName']);
       $flattype = mysqli_real_escape_string($link,  $_REQUEST['FlatType']);	
       $postaldistrict = mysqli_real_escape_string($link,  $_REQUEST['Postal']);
+      $district = mysqli_real_escape_string($link,  $_REQUEST['District']);
       $marketsegment = mysqli_real_escape_string($link,  $_REQUEST['MarketSegment']);
       $tenure = mysqli_real_escape_string($link, $_REQUEST['Tenure']);
       $typeofsale = mysqli_real_escape_string($link,  $_REQUEST['TypedSale']);
@@ -23,7 +24,7 @@
       $unitprice = mysqli_real_escape_string($link,  $_REQUEST['UnitPrice']);
       $dateofsale = mysqli_real_escape_string($link,  $_REQUEST['DateOfSale']);
 
-      $sql = "INSERT INTO properties (AgentRegistrationNo, PropertyID, ProjectName, Block, StreetName, FlatType, PostalDistrict, MarketSegment, Tenure, TypeofSale, LeaseCommenceDate, RemainingLease, NoofUnits, Price, FloorArea, TypeofArea, FloorLevel, UnitPrice, DateofSale) VALUES ( '$registrationNo', '$projectID', '$projectName', '$block', '$streetname', '$flattype', '$postaldistrict', '$marketsegment', '$tenure', '$typeofsale' , '$leasecommencedate',  '$remaininglease',  '$units',  '$price', '$floorarea',  '$typeofarea', '$floorlevel', '$unitprice', '$dateofsale')";
+      $sql = "INSERT INTO properties (AgentRegistrationNo, PropertyID, ProjectName, Block, StreetName, FlatType, PostalDistrict, District ,MarketSegment, Tenure, TypeofSale, LeaseCommenceDate, RemainingLease, NoofUnits, Price, FloorArea, TypeofArea, FloorLevel, UnitPrice, DateofSale) VALUES ( '$registrationNo', '$projectID', '$projectName', '$block', '$streetname', '$flattype', '$postaldistrict', '$district' , '$marketsegment', '$tenure', '$typeofsale' , '$leasecommencedate',  '$remaininglease',  '$units',  '$price', '$floorarea',  '$typeofarea', '$floorlevel', '$unitprice', '$dateofsale')";
 
       if(mysqli_query($link, $sql)){
          echo "Records added successfully.";
@@ -133,6 +134,26 @@
         .tablinks.active { 
 		cursor: not-allowed; 
  	   }
+
+      .tabcontentForm {
+        display: flex;
+        border-top: none;
+        height: 90%;
+      }
+
+      .tabcontentForm > .form-container {
+         background-color: #fefefe;
+         /* margin: 5% auto 15% auto; */
+         border: 1px solid #888;
+         width: 100%; /* Could be more or less, depending on screen size */
+         height: 100%;
+      }
+
+      .tabcontentForm > .form-container iframe {
+         width: 100%;
+         height: 100%;
+         overflow: hidden;
+      }
       </style>
       
    </head>
@@ -165,6 +186,7 @@
                   <label>Street Name  :<br></label><input type = "text" name = "StreetName" class = "box" /><br/><br />
                   <label>Flat Type  :<br></label><input type = "text" name = "FlatType" class = "box" /><br/><br />
                   <label>Postal District  :<br></label><input type = "text" name = "Postal" class = "box" /><br/><br />
+                  <label>District  :<br></label><input type="number" name="District" min="01" max="28"><br/><br />
                   <label>Market Segment :<br></label><input type = "text" name = "MarketSegment" class = "box"/><br /><br />
                   <label>Tenure  :<br></label><input type = "text" name = "Tenure" class = "box" /><br/><br />
                   <label>Typed Sale :<br></label><input type = "text" name = "TypedSale" class = "box" /><br/><br />
@@ -177,7 +199,8 @@
                   <label>Floor Level  :<br></label><input type = "text" name = "FloorLevel" class = "box" /><br/><br />
                   <label>Unit Price  :<br></label><input type = "text" name = "UnitPrice" class = "box" /><br/><br />
                   <label>Date of Sale  :<br></label><input type = "text" name = "DateOfSale" class = "box" /><br/><br />
-                  <input type = "submit" value = " Add Property "/><br /><br/>         
+                  <input type = "submit" value = " Add Property "/><br /><br/>  
+                  <button><a href="./welcome_profile_agent.php" style="text-decoration: none;">Back</a></button>      
 
 			</form>      
                <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
@@ -206,8 +229,16 @@
          <strong> <?php echo $_SESSION['login_name']; ?>
  </strong>
        </h3>
+
+      <div id = "VideoEdit" class="tabcontentForm">
+         <form class="form-container">
+            <iframe src="../PHPHomepage/Upload Youtube/index.php"></iframe>
+         </form>
+      </div>
+
+      <button><a href="./welcome_profile_agent.php" style="text-decoration: none;">Back</a></button> 
                
-               <form action = "" method = "post">
+               <!-- <form action = "" method = "post">
 			<label>Registration No :<br></label><input type = "text" name = "RegistrationNo" class = "box" value = <?php echo $_SESSION['login_user']; ?> /><br /><br />
                   <label>Current Video :<br></label><input type = "text" name = "CurrentVideo" class = "box" /><br /><br />
                   <label>Video Preview :<br></label><input type = "text" name = "VideoPreview" class = "box"/><br /><br />
@@ -224,7 +255,7 @@
 			<br><br><br><br>
                   <input type = "submit" value = " Upload "/><br /><br/>         
 
-			</form>      
+			</form>       -->
                <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
 					
             </div>

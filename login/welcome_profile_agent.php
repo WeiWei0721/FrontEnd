@@ -100,8 +100,13 @@ if(isset($_GET['deleteid']))
             </div>
          </nav>
       </header>
-   <?php //echo $_SESSION['msg']; ?> 
-   <!-- no session[msg] found in login.php -->
+
+   <?php
+      if (session_status() == PHP_SESSION_ACTIVE && isset($_SESSION['login_user'])){
+         $sql = "SELECT * FROM agent WHERE RegistrationNo = '". $_SESSION['login_user']. "';";
+      $result = mysqli_query($link,$sql);
+      if ($result){ $row = mysqli_fetch_array($result,MYSQLI_BOTH);}}
+   ?>
 
    <div class="listinginfo">
 
@@ -116,13 +121,13 @@ if(isset($_GET['deleteid']))
                   <td class="listdets">
                      <span class="headerdets">
                         <label class="listheader">Name<br></label>
-                        <input type = "text" name = "username" class = "box" value = <?php echo $_SESSION['login_name']; ?> />
+                        <input type = "text" name = "username" class = "box" value = <?php echo $row['Name']; ?> readonly/>
                      </span>
                   </td>
                   <td class="listdets">
                      <span class="headerdets">
                         <label class="listheader">Email<br></label>
-                        <input type = "text" name = "email" class = "box" value = <?php echo $_SESSION['login_email']; ?> />
+                        <input type = "text" name = "email" class = "box" value = <?php echo $row['Email']; ?> readonly/>
                      </span>
                   </td>
                </tr>
@@ -131,13 +136,13 @@ if(isset($_GET['deleteid']))
                   <td class="listdets">
                      <span class="headerdets">
                         <label class="listheader">Gender<br></label>
-                        <input type = "text" name = "gender" class = "box" value = <?php echo $_SESSION['login_gender']; ?> />
+                        <input type = "text" name = "gender" class = "box" value = <?php echo $row['Gender']; ?> readonly/>
                      </span>
                   </td>
                   <td class="listdets">
                      <span class="headerdets">
                         <label class="listheader">Contact Number<br></label>
-                        <input type = "text" name = "contact" class = "box" value = <?php echo $_SESSION['login_contact']; ?> />
+                        <input type = "text" name = "contact" class = "box" value = <?php echo $row['ContactNumber']; ?> readonly/>
                      </span>
                   </td>
                </tr>
@@ -146,13 +151,13 @@ if(isset($_GET['deleteid']))
                   <td class="listdets">
                      <span class="headerdets">
                         <label class="listheader">ID<br></label>
-                        <input type = "text" name = "id" class = "box" value = <?php echo $_SESSION['login_user']; ?> />
+                        <input type = "text" name = "id" class = "box" value = <?php echo $row['RegistrationNo']; ?> readonly/>
                      </span>
                   </td>
                   <td class="listdets">
                      <span class="headerdets">
                         <label class="listheader">Registration Start Date<br></label>
-                        <input type = "text" name = "id" class = "box" value = <?php echo $_SESSION['login_regstart']; ?> />
+                        <input type = "text" name = "id" class = "box" value = <?php echo $row['RegistrationStartDate']; ?> readonly/>
                      </span>
                   </td>
                </tr>
@@ -161,13 +166,13 @@ if(isset($_GET['deleteid']))
                   <td class="listdets">
                      <span class="headerdets">
                         <label class="listheader">Registration End Date<br></label>
-                        <input type = "text" name = "id" class = "box" value = <?php echo $_SESSION['login_regend']; ?> />
+                        <input type = "text" name = "id" class = "box" value = <?php echo $row['RegistrationEndDate']; ?> readonly/>
                      </span>
                   </td>
                   <td class="listdets">
                      <span class="headerdets">
                         <label class="listheader">Estate Agent Name<br></label>
-                        <input type = "text" name = "id" class = "box" value = <?php echo $_SESSION['login_estateagentname']; ?> />
+                        <input type = "text" name = "id" class = "box" value = <?php echo $row['EstateAgentName']; ?> readonly/>
                      </span>
                   </td>
                </tr>
@@ -176,7 +181,7 @@ if(isset($_GET['deleteid']))
                   <td class="listdets">
                      <span class="headerdets">
                         <label class="listheader">Estate Agent License No<br></label>
-                        <input type = "text" name = "id" class = "box" value = <?php echo $_SESSION['login_estateagentlicense']; ?> />
+                        <input type = "text" name = "id" class = "box" value = <?php echo $row['EstateAgentLicenseNo']; ?> readonly/>
                      </span>
                   </td>
                </tr>
