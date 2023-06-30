@@ -124,34 +124,34 @@ if($id >0){
 		$result[] = $row_sales;
 	}
 
-	if ($result > 0){
-		// Start the HTML table
-		echo '<table>';
+	// if ($result > 0){
+	// 	// Start the HTML table
+	// 	echo '<table>';
 
-		// Add table headers
-		echo '<tr>';
-		echo '<th>Project Name</th>';
-		echo '<th>StreetName</th>';
-		echo '<th>Floor Area Type</th>';
-		echo '<th>Price</th>';
-		echo '</tr>';
+	// 	// Add table headers
+	// 	echo '<tr>';
+	// 	echo '<th>Project Name</th>';
+	// 	echo '<th>StreetName</th>';
+	// 	echo '<th>Floor Area Type</th>';
+	// 	echo '<th>Price</th>';
+	// 	echo '</tr>';
 
-		foreach ($result as $row) {
-			echo '<tr>';
-			echo '<td>' . $row['ProjectName'] . '</td>';
-			echo '<td>' . $row['StreetName'] . '</td>';
-			echo '<td>' . $row['FloorArea'] . '</td>';
-			echo '<td>' . $row['Price'] . '</td>';
-			echo '</tr>';
-		}
+	// 	foreach ($result as $row) {
+	// 		echo '<tr>';
+	// 		echo '<td>' . $row['ProjectName'] . '</td>';
+	// 		echo '<td>' . $row['StreetName'] . '</td>';
+	// 		echo '<td>' . $row['FloorArea'] . '</td>';
+	// 		echo '<td>' . $row['Price'] . '</td>';
+	// 		echo '</tr>';
+	// 	}
 		
-		// End the HTML table
-		echo '</table>';
-	}
-	else {
-		echo '<h2 class="page-header" >Opps! No HDB data available for the specific region yet.</h2>';
+	// 	// End the HTML table
+	// 	echo '</table>';
+	// }
+	// else {
+	// 	echo '<h2 class="page-header" >Opps! No HDB data available for the specific region yet.</h2>';
 		
-	}
+	// }
 
 	#QM's part
 	$sql_resale = "SELECT flat_type, town, storey_range, floor_area_sqm, lease_commencement_date, resale_price FROM hdb_resale_data WHERE town in ".$area;
